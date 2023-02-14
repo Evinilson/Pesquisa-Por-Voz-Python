@@ -1,7 +1,24 @@
 import speech_recognition as sr
+from gtts import gTTS
+from playsound import playsound
+from time import sleep
+import os
+
 
 # Cria um objeto de reconhecimento de fala
 microfone = sr.Recognizer()
+
+def eliminar_file(file: str) -> None:
+    if file in os.listdir("./"):
+        os.remove(file)
+    sleep(3)
+    
+def reproduzir_fala(texto: str):
+    tts = gTTS(text=texto, lang='pt-br')
+    tts.save('audio.mp3')
+    playsound('audio.mp3')
+    eliminar_file("audio.mp3")
+
 
 def reconhecer_fala():
     try:
@@ -20,10 +37,23 @@ def reconhecer_fala():
     except sr.RequestError as e:
         print("Erro ao conectar-se ao serviço de reconhecimento de fala: {0}".format(e))
 
+
+def confirme_fala():
+    while True:
+        fala = reconhecer_fala()
+        if fala is not None:
+            frase = f"Você disse: {fala}"
+            reproduzir_fala(frase)
+            
+        if 0 == 1:
+            break
+    
+    
+    
 def main():
     print("Este é um programa de pesquisa por voz. Por favor, fale o que deseja pesquisar.")
-    texto_transcrito = reconhecer_fala()
-    if texto_transcrito is not None:
-        print(f"Você disse: {texto_transcrito}")
+    texto_transcrito = confirme_fala()
+    print(texto_transcrito)
+
 
 main()
