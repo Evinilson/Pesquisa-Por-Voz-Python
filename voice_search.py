@@ -1,26 +1,20 @@
 import speech_recognition as sr
 from gtts import gTTS
 from playsound import playsound
-from time import sleep
-import os
 
 
-# Cria um objeto de reconhecimento de fala
-microfone = sr.Recognizer()
 
-def eliminar_file(file: str) -> None:
-    if file in os.listdir("./"):
-        os.remove(file)
-    sleep(3)
-    
+
+
 def reproduzir_fala(texto: str):
     tts = gTTS(text=texto, lang='pt-br')
     tts.save('audio.mp3')
     playsound('audio.mp3')
-    eliminar_file("audio.mp3")
 
 
 def reconhecer_fala():
+    # Cria um objeto de reconhecimento de fala
+    microfone = sr.Recognizer()
     try:
         # Usa o microfone como fonte de áudio
         with sr.Microphone() as source:
