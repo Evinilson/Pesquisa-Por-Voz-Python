@@ -24,9 +24,9 @@ O principal benefício do aplicativo é a agilidade e praticidade que a entrada 
 ## Instalação
 
 1. Clone o repositório para o seu computador.
-2. Instale as bibliotecas necessárias executando o comando `pip install -r requirements.txt`.
+2. Instale as bibliotecas necessárias executando o comando `pip install -r requisitos.txt`.
 3. Certifique-se de ter um navegador compatível com o Selenium instalado no seu computador.
-4. Execute o script `voice_search.py` para iniciar o aplicativo.
+4. Execute o script `pesquisa_por_voz.py` para iniciar o aplicativo.
 
 
 ## Contribuições
